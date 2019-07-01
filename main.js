@@ -126,7 +126,7 @@ function addReset(defBlack){
         if(isNaN(Number(size))){
             return;
         }
-        //Prompt until user inputs a 
+        //Prompt until user inputs a number in valid range or an illegal string
         while( Number(size) <= 0 || !Number.isInteger(Number(size)) || Number(size) >100 ){    
             size = prompt("Please enter an integer value between 1 and 100");
             if(isNaN(size)){
@@ -161,6 +161,7 @@ function addReset(defBlack){
     return;    
 }
 
+//Adds the functionality of random button which sets sketch color to a random color
 function addRandom(defBlack, randColor){
     
     let randButton = document.querySelector(".random");
@@ -187,6 +188,7 @@ function addRandom(defBlack, randColor){
     return;    
 }
 
+//Adds the functionality of default button which sets sketch color to black
 function setDefault(defBlack, randColor){
     let defaultButton = document.querySelector(".default");
     defaultButton.addEventListener('click', function(){
@@ -210,19 +212,22 @@ function setDefault(defBlack, randColor){
     });
     return;
 }
-
+//Main function
 function main(){
 
+    //Function that changes the color of targetCell to black.
     function defBlack(targetCell){
         targetCell.target.style.backgroundColor = "black";
     }
 
+    //Function that changes the color of targetCell to a randomly generated color.
     function randColor(targetCell){
         targetCell.target.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 256) + ", " + 
                                                     Math.floor(Math.random() * 256) +
                                                     ", " + Math.floor(Math.random() * 256) + ")";
     }
 
+    //Layout page, inititalize styles, and add button functionalities.
     layoutPage();
 
     initStyle(defBlack);
@@ -234,6 +239,5 @@ function main(){
     setDefault(defBlack, randColor);    
     
 }
-
 
 main();
